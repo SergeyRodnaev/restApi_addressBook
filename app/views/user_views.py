@@ -47,7 +47,7 @@ class User(Resource):
         db.session.add(user)
         db.session.commit()
 
-        return '', 201
+        return user, 201
 
     @marshal_with(user_fields)
     def patch(self, user_id):

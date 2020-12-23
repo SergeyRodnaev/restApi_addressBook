@@ -41,7 +41,9 @@ class Telephones(Resource):
     @marshal_with(telephones_fields)
     def patch(self, telephones_id):
         args = telephones_update_args.parse_args()
+
         telephone = TelephoneModel.query.filter_by(id=telephones_id).first()
+
         if not telephone:
             abort(404, message="Telephones doesn't exist, cannot update")
 

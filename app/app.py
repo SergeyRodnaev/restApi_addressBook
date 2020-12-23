@@ -9,3 +9,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://test:test@localhost:5432/a
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 db = SQLAlchemy(app)
+db.create_all()

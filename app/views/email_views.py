@@ -44,9 +44,7 @@ class EmailAddress(Resource):
     def patch(self, email_id):
         args = email_update_args.parse_args()
         email = EmailAddressModel.query.filter_by(id=email_id).first()
-        email_field = args['email']
-        if email_field.find('@') == -1:
-            abort(404, message='email адрес должен содержать @')
+
         if not email:
             abort(404, message="Email doesn't exist, cannot update")
         # if args['type_of_mail'] != 'Личная':
