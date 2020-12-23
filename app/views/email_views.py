@@ -47,10 +47,7 @@ class EmailAddress(Resource):
 
         if not email:
             abort(404, message="Email doesn't exist, cannot update")
-        # if args['type_of_mail'] != 'Личная':
-        #     abort(404, message="Неправильный тип почты. Личная/Рабочий")
-        # if args['type_of_mail'] != 'Рабочий':
-        #     abort(404, message="Неправильный тип почты. Личная/Рабочий")
+
         if args['mail_type']:
             email.mail_type = args['mail_type']
         if args['email']:
@@ -63,7 +60,7 @@ class EmailAddress(Resource):
     def delete(self, email_id):
         email = EmailAddressModel.query.filter(EmailAddressModel.id == email_id).first()
         if not email:
-            abort(400, message={'No telephones with this id'})
+            abort(400, message={'No email with this id'})
 
         db.session.delete(email)
         db.session.commit()
